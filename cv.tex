@@ -1,0 +1,169 @@
+\documentclass[10pt,a4paper, twocolumn, oneside]{report}
+
+%-------------------------------------------------------------------------%
+%							REQUIRED PACKAGES							  %
+%-------------------------------------------------------------------------%
+
+\usepackage{fontspec} % Font Imports
+\usepackage{textcomp} % Symbols (º for example)
+\usepackage{fontawesome} % Social Network Symbols
+\usepackage[spanish]{babel} % Spanish language support
+\usepackage[a4paper,left=2.5cm,right=2.5cm,top=2.5cm,bottom=2.5cm]{geometry} %Margin structure
+\usepackage{lipsum}
+
+\usepackage[explicit]{titlesec} % Style modifications
+\usepackage[verbose]{wrapfig} % Images wrapped to text
+\usepackage{graphicx} % Images
+\usepackage{tabularx} % Tables
+\usepackage{array} % Table configurations
+\usepackage{multirow} % Multiple rows in tables
+\usepackage{hyperref} % References
+\usepackage{calc} % Measurements
+
+\usepackage[dvipsnames, table]{xcolor} %colors
+\usepackage{colortbl} %colors
+
+
+%-------------------------------------------------------------------------%
+%							FONT CONFIGURATION						      %
+%-------------------------------------------------------------------------%
+
+\setmainfont[
+Path          = fonts/,
+Ligatures     = TeX,
+UprightFont   = *-Light.otf,
+BoldItalicFont= *-MediumOblique.otf,
+BoldFont      = *-Medium.otf,
+ItalicFont    = *-LightOblique.otf
+]{AvenirLTStd}
+
+
+\newfontfamily\robotolight[
+  Path=fonts/,
+  UprightFont=*-Thin,
+  ItalicFont=*-ThinItalic,
+  BoldFont=*-Medium,
+  BoldItalicFont=*-MediumItalic,
+]{Roboto}
+
+
+%-------------------------------------------------------------------------%
+%							COMMANDS     							      %
+%-------------------------------------------------------------------------%
+
+% Personal data commands
+\newlength{\addresswidth}
+\newcommand{\namevar}{}
+\newcommand{\name}[1]{\renewcommand{\namevar}{{#1}}}
+\newcommand{\surnamevar}{}
+\newcommand{\surname}[1]{\renewcommand{\surnamevar}{{#1}}}
+\newcommand{\mailvar}{}
+\newcommand{\mail}[1]{\renewcommand{\mailvar}{\href{mailto://#1}{#1}}}
+\newcommand{\addressvar}{}
+\newcommand{\address}[2]{
+	\renewcommand{\addressvar}{{#1}\\{#2}}
+	\setlength{\addresswidth}{\widthof{#1}-4pt}} % If city line is wider than street line, change parameter
+\newcommand{\phonevar}{}
+\newcommand{\phone}[1]{\renewcommand{\phonevar}{{#1}}}
+\newcommand{\githubvar}{}
+\newcommand{\github}[1]{\renewcommand{\githubvar}{\href{https://www.github.com/#1}{#1}}}
+\newcommand{\linkedinvar}{}
+\newcommand{\linkedin}[2]{\renewcommand{\linkedinvar}{\href{#2}{#1}}}
+\newcommand{\profilevar}{}
+\newcommand{\profilephoto}[1]{\renewcommand{\profilevar}{{#1}}}
+
+%-------------------------------------------------------------------------%
+%							PAGE STYLING							      %
+%-------------------------------------------------------------------------%
+
+% Remove number of pages, empty style, change gap between columns, do not fill vertical spacing
+\pagestyle{empty}
+\setlength{\columnsep}{0.75cm}
+\raggedbottom 
+%https://github.com/ntd/tccv/blob/master/tccv.cls https://github.com/posquit0/Awesome-CV/blob/master/awesome-cv.cls
+
+% Top Header Style
+\newcommand{\headgenerate}{
+	\twocolumn[%			
+		\begin{minipage}{0.1\textwidth}
+			{\raisebox{1mm}[0pt][0pt]{%
+				\makebox[\textwidth][c]{\includegraphics[scale=0.4]{\profilevar}}}} % Use a webtool to crop image with circle shape
+		\end{minipage}																% http://crop-circle.imageonline.co/
+		\begin{minipage}{0.88\textwidth}
+    		\begin{flushright}
+    			\robotolight
+	   			\vskip-\lastskip%1
+	   			{\fontsize{32pt}{1em} \selectfont \textbf{\namevar}} % Name
+	   			{\fontsize{32pt}{1em} \selectfont \surnamevar} \vspace{0.5cm}\\ % Surnames
+	   			{\fontsize{9pt}{1em} \selectfont \faMap \enspace \setlength{\fboxrule}{0pt} \fbox{\parbox{\addresswidth}								{\centering\addressvar}} \quad 
+	 	  		| \quad \faEnvelope \enspace \mailvar \quad 
+	   			| \quad \faPhoneSquare \enspace \phonevar} \smallskip\\
+	   			{\fontsize{9pt}{1em} \selectfont \faGithub  \enspace \githubvar \quad | \quad \faLinkedin \enspace \linkedinvar} 
+				\bigskip\\
+ 	   		\end{flushright}%]}
+ 	   	\end{minipage}]}
+
+% Section Style
+\newcommand{\raisedrulefill}[2][0ex]{\leaders\hbox{\rule[#1]{1pt}{#2}}\hfill} 
+\titleformat{\section}{\large\bfseries}{}{0em}{\robotolight\scshape{#1}\,\color[HTML]{008080}\raisedrulefill[0.4ex]{1.3pt}}
+
+% Table Style (Right and centered cell with multiple lines)
+\newcolumntype{Y}{>{\flushright\arraybackslash}X} 
+\newcolumntype{Z}{>{\centering\arraybackslash}X} 
+\renewcommand\tabularxcolumn[1]{m{#1}}
+
+%-------------------------------------------------------------------------%
+%							DOCUMENT							          %
+%-------------------------------------------------------------------------%
+
+\begin{document}
+
+% Configure personal data and generater header
+\name{Jose Luis}
+\surname{González Calvo}
+\mail{joselu.gc.96@gmail.com}
+\phone{(+34) 688 647 601}
+\address{Grupo Fontuso Nº3 1º IZQ}{Santurtzi, Bizkaia, España} % Street, City, State, Country
+\github{jlgc96}
+\linkedin{Jose Luis González Calvo}{https://www.linkedin.com/in/jose-luis-gonzález-calvo-99732918a/} % Name and link
+\profilephoto{profile}
+\headgenerate
+
+\section{Formación académica}
+
+\lipsum[1-3]  		
+
+\section{Experiencia laboral}
+
+\lipsum[1-3]
+
+\section{Competencias}
+
+\lipsum[1-2]
+
+\section{Idiomas}
+
+\lipsum[1-2]
+
+\section{Otros}
+ 
+\lipsum[1]
+
+
+
+
+%% POSIBLE IDEA
+%\noindent\renewcommand{\arraystretch}{2}
+%\begin{tabularx}{\columnwidth}{!{\color{SkyBlue} \vrule width 3pt}>{\hsize=0.2\hsize}Z !{\color{white} \vrule width 5pt} % Create multiple columns				
+%							   >{\hsize=0.8\hsize}Y}                                  % adjust scales to get 1
+%		\rowcolor[HTML]{009292}
+%		\null\vspace{0.2cm}\includegraphics[width=0.5\hsize]{./icons/map.png}& {\color[HTML]{FFFFFF} \textbf{Grupo Fontuso N\textdegree 3 1\textdegree IZQ\linebreak Santurtzi, Bizkaia}} \\ 
+%		\rowcolor[HTML]{00ABAB}
+%		\null\vspace{0.2cm}\includegraphics[width=0.5\hsize]{./icons/mail.png}& {\color[HTML]{FFFFFF} \textbf{\href{mailto://joselu.gc.96@gmail.com}{joselu.gc.96@gmail.com}}} \\
+%		\rowcolor[HTML]{009292}
+%		\null\vspace{0.2cm}\includegraphics[width=0.55\hsize]{./icons/telephone.png}& {\color[HTML]{FFFFFF} \textbf{+34 688 647 601}} \\
+%\end{tabularx}
+
+
+
+\end{document}

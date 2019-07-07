@@ -116,43 +116,26 @@ ItalicFont    = *-LightOblique.otf
 %							SECTIONING CONFIGURATION				      %
 %-------------------------------------------------------------------------%
 
-%\noindent\renewcommand{\arraystretch}{2}
-%\begin{tabularx}{\columnwidth}{!{\color{SkyBlue} \vrule width 3pt}>{\hsize=0.2\hsize}Z !{\color{white} \vrule width 5pt} % Create multiple columns				
-%							   >{\hsize=0.8\hsize}Y}                                  % adjust scales to get 1
-%		\rowcolor[HTML]{009292}
-%		\null\vspace{0.2cm}\includegraphics[width=0.5\hsize]{./icons/map.png}& {\color[HTML]{FFFFFF} \textbf{Grupo Fontuso N\textdegree 3 1\textdegree IZQ\linebreak Santurtzi, Bizkaia}} \\ 
-%		\rowcolor[HTML]{00ABAB}
-%		\null\vspace{0.2cm}\includegraphics[width=0.5\hsize]{./icons/mail.png}& {\color[HTML]{FFFFFF} \textbf{\href{mailto://joselu.gc.96@gmail.com}{joselu.gc.96@gmail.com}}} \\
-%		\rowcolor[HTML]{009292}
-%		\null\vspace{0.2cm}\includegraphics[width=0.55\hsize]{./icons/telephone.png}& {\color[HTML]{FFFFFF} \textbf{+34 688 647 601}} \\
-%\end{tabularx}  	
-
-
-
-
 % Education Section Enviroment
 \newenvironment{edulist}[1][\unskip]{
 	\setlength{\arrayrulewidth}{6pt}	
-	\newcommand\eduitem[3]{%
+	\newcommand{\eduitem}[3]{%
 		\textbf{##1} & \textbf{\small ##2} \\
 		& \textit{\small ##3}\\\arrayrulecolor{white}\hline}	
 	\noindent{\color{CadetBlue} \large #1 \\\vspace{-0.3cm} \hrule height 2pt depth 0pt width 24pt\vspace{0.4cm}}
 	\renewcommand{\arraystretch}{1.2}
-	\noindent\tabularx{\columnwidth}{>{\hsize=0.3\hsize}Z !{\color{SkyBlue} \vrule width 3pt}  % Create multiple columns
-									 >{\hsize=0.7\hsize}Y}                                     % adjust scales to get 1
+	\noindent\tabularx{\columnwidth}{>{\hsize=0.3\hsize}Z !{\color{SkyBlue} \vrule width 3pt}  
+									 >{\hsize=0.7\hsize}Y}                                     
 	}{\endtabularx\vspace{0.25cm}}
    	
-
-%\newenvironment{educationlist}[1]{% 
-%	
-%		
-%	\noindent{\color{blue} #1}\\	
-%	\noindent\begin{tabularx}{\columnwidth}{>{\hsize=0.3\hsize}Z !{\color{SkyBlue} \vrule width 3pt} % Create multiple columns
-%											>{\hsize=0.7\hsize}Y}                                    % adjust scales to get 1
-%    }
-%    {\end{tabularx}}
-
-
+% Working Experience Enviroment
+\newenvironment{worklist}{
+	\newcommand{\workitem}[5]{%
+		{\color{CadetBlue}\noindent \large \textbf{##1}} \hfill {\textbf{\small ##2}}\\ 
+		{\noindent \robotolight \small \scshape{##3}} \hfill {\small\textbf{##4}\\
+		{\vspace{-0.2cm} \color{CadetBlue}\hrule height 2pt depth 0pt width 24pt\vspace{0.4cm}}}
+		
+        \small ##5}}{\vspace{0.25cm}}
 
 
 
@@ -185,7 +168,9 @@ ItalicFont    = *-LightOblique.otf
 
 \section{Experiencia laboral}
 
-\lipsum[1-3]
+\begin{worklist}
+	\workitem{Sarenet}{Junio 2019 - Today}{Software Developer}{Zamudio}{Descripción larga de lo que he hecho}
+\end{worklist}
 
 \section{Competencias}
 

@@ -131,16 +131,16 @@ ItalicFont    = *-LightOblique.otf
 
 
 % Education Section Enviroment
-\newcommand{\separator}{\noindent\hfil\rule{0.5\textwidth}{.4pt}\hfil}
 \newenvironment{edulist}[1][\unskip]{
+	\setlength{\arrayrulewidth}{6pt}	
 	\newcommand\eduitem[3]{%
 		\textbf{##1} & \textbf{\small ##2} \\
-		& \textit{\small ##3}\\}	
-	\noindent{\color{CadetBlue} \large #1\hrule height 1pt depth 0pt width 16pt\vspace{0.5cm}}
-	\renewcommand{\arraystretch}{1.5}
+		& \textit{\small ##3}\\\arrayrulecolor{white}\hline}	
+	\noindent{\color{CadetBlue} \large #1 \\\vspace{-0.3cm} \hrule height 2pt depth 0pt width 24pt\vspace{0.4cm}}
+	\renewcommand{\arraystretch}{1.2}
 	\noindent\tabularx{\columnwidth}{>{\hsize=0.3\hsize}Z !{\color{SkyBlue} \vrule width 3pt}  % Create multiple columns
-									 >{\hsize=0.7\hsize}Y}                                   % adjust scales to get 1
-	}{\endtabularx}
+									 >{\hsize=0.7\hsize}Y}                                     % adjust scales to get 1
+	}{\endtabularx\vspace{0.25cm}}
    	
 
 %\newenvironment{educationlist}[1]{% 
@@ -174,10 +174,13 @@ ItalicFont    = *-LightOblique.otf
 \headgenerate
 
 \section{Formación académica}
+\begin{edulist}[Estudios Superiores]
+	\eduitem{2013 - 2015}{Bachillerato en la rama de Ciencias/Tecnología}{I.E.S Kantauri (Santurtzi)}
+\end{edulist}
 
-\begin{edulist}[Educación Superior]
-\eduitem{2015 - 2018}{Grado en Ingeniería en Tecnología de Telecomunicación}{Escuela de Ingeniería de Bilbao (UPV-EHU)}
-\eduitem{2015 - 2018}{Grado en Ingeniería en Tecnología de Telecomunicación}{Escuela de Ingeniería de Bilbao (UPV-EHU)}
+\begin{edulist}[Estudios Universitarios]
+	\eduitem{2015 - 2018}{Grado en Ingeniería en Tecnología de Telecomunicación (Mención en Telemática)}{Escuela de Ingeniería de Bilbao (UPV-EHU)}
+	\eduitem{2018 - WIP}{Master en Ingeniería en Tecnología de Telecomunicación (Mención en Telemática)}{Escuela de Ingeniería de Bilbao (UPV-EHU)}
 \end{edulist}
 
 \section{Experiencia laboral}

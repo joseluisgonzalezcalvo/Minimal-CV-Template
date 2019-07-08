@@ -15,10 +15,12 @@
 \usepackage[verbose]{wrapfig} % Images wrapped to text
 \usepackage{graphicx} % Images
 \usepackage{tabularx} % Tables
+\usepackage{makecell}
 \usepackage{array} % Table configurations
 \usepackage{multirow} % Multiple rows in tables
 \usepackage{hyperref} % References
 \usepackage{calc} % Measurements
+\usepackage{multido} % Repeat commands
 
 \usepackage[dvipsnames, table]{xcolor} %colors
 \usepackage{colortbl} %colors
@@ -126,19 +128,36 @@ ItalicFont    = *-LightOblique.otf
 	\renewcommand{\arraystretch}{1.2}
 	\noindent\tabularx{\columnwidth}{>{\hsize=0.3\hsize}Z !{\color{SkyBlue} \vrule width 3pt}  
 									 >{\hsize=0.7\hsize}Y}                                     
-	}{\endtabularx\vspace{0.25cm}}
+	}{\endtabularx\vspace{0.15cm}}
    	
 % Working Experience Enviroment
 \newenvironment{worklist}{
+	\newcommand{\separator}{{\null\hfill\rule{16pt}{1pt}\hfill\medskip\\}}
 	\newcommand{\workitem}[5]{%
-		{\color{CadetBlue}\noindent \large \textbf{##1}} \hfill {\textbf{\small ##2}}\\ 
+		{\color{CadetBlue}\noindent \large ##1} \hfill {\textbf{\small ##2}}\\ 
 		{\noindent \robotolight \small \scshape{##3}} \hfill {\small\textbf{##4}\\
 		{\vspace{-0.2cm} \color{CadetBlue}\hrule height 2pt depth 0pt width 24pt\vspace{0.4cm}}}
 		
-        \small ##5}}{\vspace{0.25cm}}
-
-
-
+        \small ##5\medskip\\}}{\vspace{-0.35cm}}
+        
+% Communication Skill Environment
+\newenvironment{commlist}{
+	\newcommand{\excellent}{\multido{}{5}{\includegraphics[width=11pt]{icons/fillcircle}\hspace{1pt}}}
+	\newcommand{\good}{\multido{}{4}{\includegraphics[width=11pt]{icons/fillcircle}\hspace{1pt}}
+	\multido{}{1}{\includegraphics[width=11pt]{icons/whitecircle}\hspace{1pt}}}
+	\newcommand{\medium}{\multido{}{3}{\includegraphics[width=11pt]{icons/fillcircle}\hspace{1pt}}
+	\multido{}{2}{\includegraphics[width=11pt]{icons/whitecircle}\hspace{1pt}}}
+	\newcommand{\regular}{\multido{}{2}{\includegraphics[width=11pt]{icons/fillcircle}\hspace{1pt}}
+	\multido{}{3}{\includegraphics[width=11pt]{icons/whitecircle}\hspace{1pt}}}
+	\newcommand{\bad}{\multido{}{1}{\includegraphics[width=11pt]{icons/fillcircle}\hspace{1pt}}
+	\multido{}{4}{\includegraphics[width=11pt]{icons/whitecircle}\hspace{1pt}}}
+	\newcommand{\commitem}[4][\vspace{-0.2cm}]{%
+		{\noindent{\color{CadetBlue} \large ##2 \\\vspace{-0.3cm} \hrule height 2pt depth 0pt width 24pt\vspace{0.2cm}}}
+		{\noindent \begin{tabular*}{\columnwidth}{l@{\extracolsep{\fill}}r}
+		 	\makecell[l]{\bfseries \itshape \small ##3 \\ \bfseries \itshape \small ##1} & ##4\\
+		\end{tabular*}}\vspace{0.4cm}                      
+	}}{\vspace{-0.8cm}}	
+	
 %-------------------------------------------------------------------------%
 %							DOCUMENT							          %
 %-------------------------------------------------------------------------%
@@ -158,25 +177,30 @@ ItalicFont    = *-LightOblique.otf
 
 \section{Formación académica}
 \begin{edulist}[Estudios Superiores]
-	\eduitem{2013 - 2015}{Bachillerato en la rama de Ciencias/Tecnología}{I.E.S Kantauri (Santurtzi)}
+	\eduitem{2012 - 2014}{Bachillerato en la rama de Ciencias/Tecnología}{I.E.S Kantauri (Santurtzi)}
 \end{edulist}
 
 \begin{edulist}[Estudios Universitarios]
-	\eduitem{2015 - 2018}{Grado en Ingeniería en Tecnología de Telecomunicación (Mención en Telemática)}{Escuela de Ingeniería de Bilbao (UPV-EHU)}
+	\eduitem{2014 - 2018}{Grado en Ingeniería en Tecnología de Telecomunicación (Mención en Telemática)}{Escuela de Ingeniería de Bilbao (UPV-EHU)}
 	\eduitem{2018 - WIP}{Master en Ingeniería en Tecnología de Telecomunicación (Mención en Telemática)}{Escuela de Ingeniería de Bilbao (UPV-EHU)}
 \end{edulist}
 
 \section{Experiencia laboral}
 
 \begin{worklist}
-	\workitem{Sarenet}{Junio 2019 - Today}{Software Developer}{Zamudio}{Descripción larga de lo que he hecho}
+	\workitem{Sarenet}{Septiembre 2019 - Today}{Network Engineer}{Zamudio}{Instalación 
+		y configuración de equipamiento de red. Diseño de sistemas de monitorización automatizados para dicho equipamiento. 					Provisión de servicios basados en \textit{Cloud Computing}.}
+		\separator
 \end{worklist}
 
-\section{Competencias}
-
-\lipsum[1-2]
-
 \section{Idiomas}
+\begin{commlist}
+	\commitem{Castellano}{Idioma Nativo}{\excellent}
+	\commitem[(Council of Europe Level B2)]{Inglés}{First Certificate of English}{\good}
+	\commitem[(Nivel de bachillerato)]{Euskera}{Conceptos básicos}{\bad}
+\end{commlist}
+
+\section{\textit{Software Skills}}
 
 \lipsum[1-2]
 

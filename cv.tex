@@ -12,6 +12,7 @@
 \usepackage{lipsum}
 
 \usepackage[explicit]{titlesec} % Style modifications
+\usepackage{fancyhdr} % Footer modification
 \usepackage[verbose]{wrapfig} % Images wrapped to text
 \usepackage{graphicx} % Images
 \usepackage{tabularx} % Tables
@@ -74,12 +75,22 @@ ItalicFont    = *-LightOblique.otf
 \newcommand{\profilevar}{}
 \newcommand{\profilephoto}[1]{\renewcommand{\profilevar}{{#1}}}
 
+% Skill level commands
+\newcommand{\excellent}{\multido{}{5}{\includegraphics[width=11pt]{icons/fillcircle}\hspace{1pt}}}
+\newcommand{\good}{\multido{}{4}{\includegraphics[width=11pt]{icons/fillcircle}\hspace{1pt}}
+\multido{}{1}{\includegraphics[width=11pt]{icons/whitecircle}\hspace{1pt}}}
+\newcommand{\medium}{\multido{}{3}{\includegraphics[width=11pt]{icons/fillcircle}\hspace{1pt}}
+\multido{}{2}{\includegraphics[width=11pt]{icons/whitecircle}\hspace{1pt}}}
+\newcommand{\regular}{\multido{}{2}{\includegraphics[width=11pt]{icons/fillcircle}\hspace{1pt}}
+\multido{}{3}{\includegraphics[width=11pt]{icons/whitecircle}\hspace{1pt}}}
+\newcommand{\bad}{\multido{}{1}{\includegraphics[width=11pt]{icons/fillcircle}\hspace{1pt}}
+\multido{}{4}{\includegraphics[width=11pt]{icons/whitecircle}\hspace{1pt}}}
+
 %-------------------------------------------------------------------------%
 %							PAGE STYLING							      %
 %-------------------------------------------------------------------------%
 
-% Remove number of pages, empty style, change gap between columns, do not fill vertical spacing
-\pagestyle{empty}
+% Change gap between columns, do not fill vertical spacing
 \setlength{\columnsep}{0.75cm}
 \raggedbottom 
 %https://github.com/ntd/tccv/blob/master/tccv.cls https://github.com/posquit0/Awesome-CV/blob/master/awesome-cv.cls
@@ -101,9 +112,19 @@ ItalicFont    = *-LightOblique.otf
 	 	  		| \quad \faEnvelope \enspace \mailvar \quad 
 	   			| \quad \faPhoneSquare \enspace \phonevar} \smallskip\\
 	   			{\fontsize{9pt}{1em} \selectfont \faGithub  \enspace \githubvar \quad | \quad \faLinkedin \enspace \linkedinvar} 
-				\vspace{0.5cm}
+				\vspace{1cm}
  	   		\end{flushright}%]}
  	   	\end{minipage}]}
+ 	   	
+% Footer Style
+\fancyhfoffset{0em} % Set offset
+\renewcommand{\headrulewidth}{0pt} %
+\fancyhf{} % Remove contentes in header and footer
+  \fancyfoot[C]{\vspace{-0.3cm}\color{Gray}\textbf{-\space\thepage\space-}}%
+  \fancyfoot[L]{\vspace{-0.3cm}\color{Gray}\today}
+  \fancyfoot[R]{\vspace{-0.3cm}\color{Gray}\namevar \space \surnamevar}%
+\pagestyle{fancy}
+
 
 % Section Style
 \newcommand{\raisedrulefill}[2][0ex]{\leaders\hbox{\rule[#1]{0.4pt}{#2}}\hfill} 
@@ -118,23 +139,23 @@ ItalicFont    = *-LightOblique.otf
 %							SECTIONING CONFIGURATION				      %
 %-------------------------------------------------------------------------%
 
-% Education Section Enviroment
+% Education Section Environment
 \newenvironment{edulist}[1][\unskip]{
 	\setlength{\arrayrulewidth}{6pt}	
 	\newcommand{\eduitem}[3]{%
 		\textbf{##1} & \textbf{\small ##2} \\
 		& \textit{\small ##3}\\\arrayrulecolor{white}\hline}	
-	\noindent{\color{CadetBlue} \large #1 \\\vspace{-0.3cm} \hrule height 2pt depth 0pt width 24pt\vspace{0.4cm}}
+	{\noindent{\color{CadetBlue} \fontsize{11pt}{1em}\selectfont #1 \\\vspace{-0.2cm} \hrule height 2pt depth 0pt width 24pt				\vspace{0.4cm}}}
 	\renewcommand{\arraystretch}{1.2}
 	\noindent\tabularx{\columnwidth}{>{\hsize=0.3\hsize}Z !{\color{SkyBlue} \vrule width 3pt}  
 									 >{\hsize=0.7\hsize}Y}                                     
 	}{\endtabularx\vspace{0.15cm}}
    	
-% Working Experience Enviroment
+% Working Experience Environment
 \newenvironment{worklist}{
 	\newcommand{\separator}{{\null\hfill\rule{16pt}{1pt}\hfill\medskip\\}}
 	\newcommand{\workitem}[5]{%
-		{\color{CadetBlue}\noindent \large ##1} \hfill {\textbf{\small ##2}}\\ 
+		{\color{CadetBlue}\noindent \fontsize{11pt}{1em}\selectfont ##1} \hfill {\textbf{\small ##2}}\\ 
 		{\noindent \robotolight \small \scshape{##3}} \hfill {\small\textbf{##4}\\
 		{\vspace{-0.2cm} \color{CadetBlue}\hrule height 2pt depth 0pt width 24pt\vspace{0.4cm}}}
 		
@@ -142,21 +163,24 @@ ItalicFont    = *-LightOblique.otf
         
 % Communication Skill Environment
 \newenvironment{commlist}{
-	\newcommand{\excellent}{\multido{}{5}{\includegraphics[width=11pt]{icons/fillcircle}\hspace{1pt}}}
-	\newcommand{\good}{\multido{}{4}{\includegraphics[width=11pt]{icons/fillcircle}\hspace{1pt}}
-	\multido{}{1}{\includegraphics[width=11pt]{icons/whitecircle}\hspace{1pt}}}
-	\newcommand{\medium}{\multido{}{3}{\includegraphics[width=11pt]{icons/fillcircle}\hspace{1pt}}
-	\multido{}{2}{\includegraphics[width=11pt]{icons/whitecircle}\hspace{1pt}}}
-	\newcommand{\regular}{\multido{}{2}{\includegraphics[width=11pt]{icons/fillcircle}\hspace{1pt}}
-	\multido{}{3}{\includegraphics[width=11pt]{icons/whitecircle}\hspace{1pt}}}
-	\newcommand{\bad}{\multido{}{1}{\includegraphics[width=11pt]{icons/fillcircle}\hspace{1pt}}
-	\multido{}{4}{\includegraphics[width=11pt]{icons/whitecircle}\hspace{1pt}}}
 	\newcommand{\commitem}[4][\vspace{-0.2cm}]{%
-		{\noindent{\color{CadetBlue} \large ##2 \\\vspace{-0.3cm} \hrule height 2pt depth 0pt width 24pt\vspace{0.2cm}}}
+		{\noindent{\color{CadetBlue}  \fontsize{11pt}{1em}\selectfont ##2 \\\vspace{-0.2cm} \hrule height 2pt depth 0pt width 24pt				\vspace{0.2cm}}}
 		{\noindent \begin{tabular*}{\columnwidth}{l@{\extracolsep{\fill}}r}
 		 	\makecell[l]{\bfseries \itshape \small ##3 \\ \bfseries \itshape \small ##1} & ##4\\
 		\end{tabular*}}\vspace{0.4cm}                      
-	}}{\vspace{-0.8cm}}	
+	}}{\vspace{-0.5cm}}	
+	
+% Software & Networking Skills Environment
+\newenvironment{skilllist}[1][\unskip]{
+	\setlength{\arrayrulewidth}{6pt}	
+	\newcommand{\skillitem}[4][\unskip]{%
+		\textbf{##2} & \textbf{\small ##3} \\
+		##1 & ##4\\\arrayrulecolor{white}\hline}
+	\noindent{\color{CadetBlue} \fontsize{11pt}{1em}\selectfont#1 \\\vspace{-0.2cm} \hrule height 2pt depth 0pt width 24pt					\vspace{0.4cm}}	
+	\renewcommand{\arraystretch}{1.2}
+	\noindent\tabularx{\columnwidth}{>{\hsize=0.3\hsize}Z !{\color{SkyBlue} \vrule width 3pt}  
+									 >{\hsize=0.7\hsize}Y}                                     
+	}{\endtabularx\vspace{0.15cm}}
 	
 %-------------------------------------------------------------------------%
 %							DOCUMENT							          %
@@ -175,54 +199,67 @@ ItalicFont    = *-LightOblique.otf
 \profilephoto{profile}
 \headgenerate
 
-\section{Formación académica}
+\section{Summary}
+
+Instalación y configuración de equipamiento de red. Diseño de sistemas de monitorización automatizados para dicho equipamiento. 	Provisión de servicios basados en \textit{Cloud Computing}. Instalación y configuración de equipamiento de red. Diseño de sistemas de monitorización automatizados para dicho equipamiento. Provisión de servicios basados en \textit{Cloud Computing}. 
+
+\section{Education \& Courses}
 \begin{edulist}[Estudios Superiores]
 	\eduitem{2012 - 2014}{Bachillerato en la rama de Ciencias/Tecnología}{I.E.S Kantauri (Santurtzi)}
 \end{edulist}
-
 \begin{edulist}[Estudios Universitarios]
 	\eduitem{2014 - 2018}{Grado en Ingeniería en Tecnología de Telecomunicación (Mención en Telemática)}{Escuela de Ingeniería de Bilbao (UPV-EHU)}
 	\eduitem{2018 - WIP}{Master en Ingeniería en Tecnología de Telecomunicación (Mención en Telemática)}{Escuela de Ingeniería de Bilbao (UPV-EHU)}
 \end{edulist}
 
-\section{Experiencia laboral}
+\section{Working Experience}
 
 \begin{worklist}
 	\workitem{Sarenet}{Septiembre 2019 - Today}{Network Engineer}{Zamudio}{Instalación 
 		y configuración de equipamiento de red. Diseño de sistemas de monitorización automatizados para dicho equipamiento. 					Provisión de servicios basados en \textit{Cloud Computing}.}
-		\separator
+		%\separator
 \end{worklist}
 
-\section{Idiomas}
+\section{Communication Skills}
 \begin{commlist}
 	\commitem{Castellano}{Idioma Nativo}{\excellent}
 	\commitem[(Council of Europe Level B2)]{Inglés}{First Certificate of English}{\good}
-	\commitem[(Nivel de bachillerato)]{Euskera}{Conceptos básicos}{\bad}
 \end{commlist}
 
-\section{\textit{Software Skills}}
+\section{Software Skills}
 
-\lipsum[1-2]
+\begin{skilllist} [Lenguajes de programación]
+	\skillitem{C}{Conocimiento medio. Manejo de código a bajo nivel.}{\medium}
+	\skillitem{Python}{Nivel básico. Aprendiendo a programar controladores SDNs.}{\medium}
+\end{skilllist}
+\begin{skilllist} [Web Development]
+	\skillitem{Java}{Desarrollo del \textit{backend} en servidores web con Java EE.}{\medium}
+	\skillitem{HTML\linebreak CSS \& JS}{Conocimientos básicos para diseñar páginas web simples.}{\regular}
+	\skillitem{MEAN\linebreak Stack}{Desarrollo de un sistema web para el Trabajo Fin de Grado.}{\medium}
+\end{skilllist}\newpage
+\begin{skilllist} [Android]
+	\skillitem{Android Studio}{Desarrollo de una aplicación con AR para localización de aulas. (\textit{Class2Class})}{\good}
+\end{skilllist}
+\begin{skilllist} [Miscelánea]
+	\skillitem{\LaTeX}{Manejo avanzado. Diseño de plantillas (incluido este CV).}{\excellent}
+\end{skilllist}
+
+\section{Networking Skills}
+
+\begin{skilllist} [General]
+	\skillitem{Linux}{Buen manejo y soltura con sistemas Linux (Nativo y/o máquinas virtuales).}{\good}
+\end{skilllist}
+\begin{skilllist} [Equipamiento de red]
+	\skillitem{GNS3}{Manejo avanzado del software de virtualización para emular despliegues de red.}{\excellent}
+	\skillitem{Cisco}{Familiarizado con la configuración y gestión del ecosistema Cisco.}{\good}
+	\skillitem{Juniper}{Actualmente aprendiendo los conceptos básicos del ecosistema.}{\regular}
+\end{skilllist}
+\begin{skilllist} [Seguridad]
+	\skillitem{\textit{Firewalls} Checkpoint}{Definición y configuración de reglas de filtrado.}{\good}
+\end{skilllist}
 
 \section{Otros}
  
 \lipsum[1]
-
-
-
-
-%% POSIBLE IDEA
-%\noindent\renewcommand{\arraystretch}{2}
-%\begin{tabularx}{\columnwidth}{!{\color{SkyBlue} \vrule width 3pt}>{\hsize=0.2\hsize}Z !{\color{white} \vrule width 5pt} % Create multiple columns				
-%							   >{\hsize=0.8\hsize}Y}                                  % adjust scales to get 1
-%		\rowcolor[HTML]{009292}
-%		\null\vspace{0.2cm}\includegraphics[width=0.5\hsize]{./icons/map.png}& {\color[HTML]{FFFFFF} \textbf{Grupo Fontuso N\textdegree 3 1\textdegree IZQ\linebreak Santurtzi, Bizkaia}} \\ 
-%		\rowcolor[HTML]{00ABAB}
-%		\null\vspace{0.2cm}\includegraphics[width=0.5\hsize]{./icons/mail.png}& {\color[HTML]{FFFFFF} \textbf{\href{mailto://joselu.gc.96@gmail.com}{joselu.gc.96@gmail.com}}} \\
-%		\rowcolor[HTML]{009292}
-%		\null\vspace{0.2cm}\includegraphics[width=0.55\hsize]{./icons/telephone.png}& {\color[HTML]{FFFFFF} \textbf{+34 688 647 601}} \\
-%\end{tabularx}
-
-
 
 \end{document}

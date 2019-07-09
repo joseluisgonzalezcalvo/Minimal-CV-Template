@@ -1,0 +1,190 @@
+\documentclass[10pt,a4paper, twocolumn, oneside]{report}
+
+%-------------------------------------------------------------------------%
+%							REQUIRED PACKAGES							  %
+%-------------------------------------------------------------------------%
+
+\usepackage{fontspec} % Font Imports
+\usepackage{textcomp} % Symbols (º for example)
+\usepackage{fontawesome} % Social Network Symbols
+\usepackage{amssymb} % Square symbol
+\usepackage[UKenglish]{babel} % Language support -> Change to your default language
+\usepackage[a4paper,left=2.5cm,right=2.5cm,top=2.5cm,bottom=2.5cm]{geometry} %Margin structure
+
+\usepackage[explicit]{titlesec} % Style modifications
+\usepackage{fancyhdr} % Footer modification
+\usepackage[verbose]{wrapfig} % Images wrapped to text
+\usepackage{graphicx} % Images
+\usepackage{enumitem} % Change itemize color
+\usepackage{tabularx} % Tables
+\usepackage{makecell} % Multiple lines in cell
+\usepackage{array} % Table configurations
+\usepackage{multirow} % Multiple rows in tables
+\usepackage{hyperref} % References
+\usepackage{calc} % Measurements
+\usepackage{multido} % Repeat commands
+
+\usepackage[dvipsnames, table]{xcolor} %colors
+\usepackage{colortbl} %colors
+
+
+%-------------------------------------------------------------------------%
+%							FONT CONFIGURATION						      %
+%-------------------------------------------------------------------------%
+
+\setmainfont[
+Path          = fonts/,
+Ligatures     = TeX,
+UprightFont   = *-Light.otf,
+BoldItalicFont= *-MediumOblique.otf,
+BoldFont      = *-Medium.otf,
+ItalicFont    = *-LightOblique.otf
+]{AvenirLTStd}
+
+
+\newfontfamily\robotolight[
+  Path=fonts/,
+  UprightFont=*-Thin,
+  ItalicFont=*-ThinItalic,
+  BoldFont=*-Medium,
+  BoldItalicFont=*-MediumItalic,
+]{Roboto}
+
+
+%-------------------------------------------------------------------------%
+%							COMMANDS     							      %
+%-------------------------------------------------------------------------%
+
+% Personal data commands
+\newlength{\addresswidth}
+\newcommand{\namevar}{}
+\newcommand{\name}[1]{\renewcommand{\namevar}{{#1}}}
+\newcommand{\surnamevar}{}
+\newcommand{\surname}[1]{\renewcommand{\surnamevar}{{#1}}}
+\newcommand{\mailvar}{}
+\newcommand{\mail}[1]{\renewcommand{\mailvar}{\href{mailto://#1}{#1}}}
+\newcommand{\addressvar}{}
+\newcommand{\address}[2]{
+	\renewcommand{\addressvar}{{#1}\\{#2}}
+	\setlength{\addresswidth}{\widthof{#2}-4pt}} % If city line is wider than street line, change parameter
+\newcommand{\phonevar}{}
+\newcommand{\phone}[1]{\renewcommand{\phonevar}{{#1}}}
+\newcommand{\githubvar}{}
+\newcommand{\github}[1]{\renewcommand{\githubvar}{\href{https://www.github.com/#1}{#1}}}
+\newcommand{\linkedinvar}{}
+\newcommand{\linkedin}[2]{\renewcommand{\linkedinvar}{\href{#2}{#1}}}
+\newcommand{\profilevar}{}
+\newcommand{\profilephoto}[1]{\renewcommand{\profilevar}{{#1}}}
+
+% Skill level commands
+\newcommand{\excellent}{\multido{}{5}{\includegraphics[width=11pt]{icons/fillcircle}\hspace{1pt}}}
+\newcommand{\good}{\multido{}{4}{\includegraphics[width=11pt]{icons/fillcircle}\hspace{1pt}}
+\multido{}{1}{\includegraphics[width=11pt]{icons/whitecircle}\hspace{1pt}}}
+\newcommand{\medium}{\multido{}{3}{\includegraphics[width=11pt]{icons/fillcircle}\hspace{1pt}}
+\multido{}{2}{\includegraphics[width=11pt]{icons/whitecircle}\hspace{1pt}}}
+\newcommand{\regular}{\multido{}{2}{\includegraphics[width=11pt]{icons/fillcircle}\hspace{1pt}}
+\multido{}{3}{\includegraphics[width=11pt]{icons/whitecircle}\hspace{1pt}}}
+\newcommand{\bad}{\multido{}{1}{\includegraphics[width=11pt]{icons/fillcircle}\hspace{1pt}}
+\multido{}{4}{\includegraphics[width=11pt]{icons/whitecircle}\hspace{1pt}}}
+
+%-------------------------------------------------------------------------%
+%							PAGE STYLING							      %
+%-------------------------------------------------------------------------%
+
+% Change gap between columns, do not fill vertical spacing
+\setlength{\columnsep}{0.75cm}
+\raggedbottom 
+%https://github.com/ntd/tccv/blob/master/tccv.cls https://github.com/posquit0/Awesome-CV/blob/master/awesome-cv.cls
+
+% Top Header Style
+\newcommand{\headgenerate}{
+	\twocolumn[%			
+		\begin{minipage}{0.1\textwidth}
+			{\raisebox{1mm}[0pt][0pt]{%
+				\makebox[\textwidth][c]{\includegraphics[scale=0.4]{\profilevar}}}} % Use a webtool to crop image with circle shape
+		\end{minipage}																% http://crop-circle.imageonline.co/
+		\begin{minipage}{0.88\textwidth}
+    		\begin{flushright}
+    			\robotolight
+	   			\vskip-\lastskip%1
+	   			{\fontsize{32pt}{1em} \selectfont \textbf{\namevar}} % Name
+	   			{\fontsize{32pt}{1em} \selectfont \surnamevar} \vspace{0.5cm}\\ % Surnames
+	   			{\fontsize{9pt}{1em} \selectfont \faMap \enspace \setlength{\fboxrule}{0pt} \fbox{\parbox{\addresswidth}								{\centering\addressvar}} \quad 
+	 	  		| \quad \faEnvelope \enspace \mailvar \quad 
+	   			| \quad \faPhoneSquare \enspace \phonevar} \smallskip\\
+	   			{\fontsize{9pt}{1em} \selectfont \faGithub  \enspace \githubvar \quad | \quad \faLinkedin \enspace \linkedinvar} 
+				\vspace{1cm}
+ 	   		\end{flushright}%]}
+ 	   	\end{minipage}]}
+ 	   	
+% Footer Style
+\fancyhfoffset{0em} % Set offset
+\renewcommand{\headrulewidth}{0pt} %
+\fancyhf{} % Remove contentes in header and footer
+  \fancyfoot[C]{\vspace{-0.3cm}\color{Gray}\textbf{-\space\thepage\space-}}%
+  \fancyfoot[L]{\vspace{-0.3cm}\color{Gray}\today}
+  \fancyfoot[R]{\vspace{-0.3cm}\color{Gray}\namevar \space \surnamevar}%
+\pagestyle{fancy}
+
+
+% Section Style
+\newcommand{\raisedrulefill}[2][0ex]{\leaders\hbox{\rule[#1]{0.4pt}{#2}}\hfill} 
+\titleformat{\section}{\large\bfseries}{}{0em}{\robotolight\scshape{#1}\,\hspace{10pt}\color{MidnightBlue}\raisedrulefill[0.4ex]{1.3pt}}
+
+% Table Style (Right and centered cell with multiple lines)
+\newcolumntype{Y}{>{\flushright\arraybackslash}X} 
+\newcolumntype{Z}{>{\centering\arraybackslash}X} 
+\renewcommand\tabularxcolumn[1]{m{#1}}
+
+%-------------------------------------------------------------------------%
+%							SECTIONING CONFIGURATION				      %
+%-------------------------------------------------------------------------%
+
+% Education Section Environment
+\newenvironment{edulist}[1][\unskip]{
+	\setlength{\arrayrulewidth}{6pt}	
+	\newcommand{\eduitem}[3]{%
+		\textbf{##1} & \textbf{\small ##2} \\
+		& \textit{\small ##3}\\\arrayrulecolor{white}\hline}	
+	{\noindent{\color{CadetBlue} \fontsize{11pt}{1em}\selectfont #1 \\\vspace{-0.2cm} \hrule height 2pt depth 0pt width 24pt				\vspace{0.4cm}}}
+	\renewcommand{\arraystretch}{1.2}
+	\noindent\tabularx{\columnwidth}{>{\hsize=0.3\hsize}Z !{\color{SkyBlue} \vrule width 3pt}  
+									 >{\hsize=0.7\hsize}Y}                                     
+	}{\endtabularx\vspace{0.15cm}}
+   	
+% Working Experience Environment
+\newenvironment{worklist}{
+	\newcommand{\separator}{{\null\hfill\rule{16pt}{1pt}\hfill\medskip\\}}
+	\newcommand{\workitem}[5]{%
+		{\color{CadetBlue}\noindent \fontsize{11pt}{1em}\selectfont ##1} \hfill {\textbf{\small ##2}}\\ 
+		{\noindent \robotolight \small \scshape{##3}} \hfill {\small\textbf{##4}\\
+		{\vspace{-0.2cm} \color{CadetBlue}\hrule height 2pt depth 0pt width 24pt\vspace{0.4cm}}}
+		
+        \small ##5\medskip\\}}{\vspace{-0.35cm}}
+        
+% Communication Skill Environment
+\newenvironment{commlist}{
+	\newcommand{\commitem}[4][\vspace{-0.2cm}]{%
+		{\noindent{\color{CadetBlue}  \fontsize{11pt}{1em}\selectfont ##2 \\\vspace{-0.2cm} \hrule height 2pt depth 0pt width 24pt				\vspace{0.2cm}}}
+		{\noindent \begin{tabular*}{\columnwidth}{l@{\extracolsep{\fill}}r}
+		 	\makecell[l]{\bfseries \itshape \small ##3 \\ \bfseries \itshape \small ##1} & ##4\\
+		\end{tabular*}}\vspace{0.4cm}                      
+	}}{\vspace{-0.5cm}}	
+	
+% Software & Networking Skills Environment
+\newenvironment{skilllist}[1][\unskip]{
+	\setlength{\arrayrulewidth}{6pt}	
+	\newcommand{\skillitem}[4][\unskip]{%
+		\textbf{##2} & \textbf{\small ##3} \\
+		##1 & ##4\\\arrayrulecolor{white}\hline}
+	\noindent{\color{CadetBlue} \fontsize{11pt}{1em}\selectfont#1 \\\vspace{-0.2cm} \hrule height 2pt depth 0pt width 24pt					\vspace{0.4cm}}	
+	\renewcommand{\arraystretch}{1.2}
+	\noindent\tabularx{\columnwidth}{>{\hsize=0.3\hsize}Z !{\color{SkyBlue} \vrule width 3pt}  
+									 >{\hsize=0.7\hsize}Y}                                     
+	}{\endtabularx\vspace{0.15cm}}
+	
+% Aditional information Environment
+\newenvironment{extralist}[1][\unskip]{
+	\begin{itemize}[label=\textcolor{SkyBlue}{$\blacksquare$}]    
+	  
+	}{\end{itemize}\vspace{0.15cm}}

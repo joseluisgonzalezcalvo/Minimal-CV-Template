@@ -1,3 +1,34 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%   Minimal-CV Main File V.1.0 (C) 	%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+%
+%
+% This template has been downloaded from:
+% https://github.com/jlgc96/Minimal-CV-Template
+%
+%
+% Design made by:
+% Jose Luis González Calvo <joselu.gc.96@gmail.com>
+%
+%
+% Important information:
+% The main objective of this template is generate a stylish document focusing on the content of the CV.
+% This document imports the configuration defined in the preamble and generate the template using only 
+% the commands designed. You can obtain simplified information on how to use the template in the description 
+% page on Github. The design is flexible, so you can change the sections and/or add more.
+%
+% File License
+% This work may be distributed and/or modified under the
+% conditions of the LaTeX Project Public License, either version 1.3
+% of this license or (at your option) any later version.
+% The latest version of this license is in
+%   http://www.latex-project.org/lppl.txt
+% and version 1.3 or later is part of all distributions of LaTeX
+% version 2005/12/01 or later.
+%
+%
+
+
 %-------------------------------------------------------------------------%
 %							STYLE IMPORT						          %
 %-------------------------------------------------------------------------%
@@ -11,14 +42,15 @@
 \begin{document}
 
 % Configure personal data
-\name{Name}
-\surname{Sur Name}
-\mail{email@gmail.com}
-\phone{(+34) 111 111 111}
-\address{123 Elm St.}{Fayetteville, NY} % Street, City, State, Country
-\github{name}
-\linkedin{Name Sur Name}{https://www.linkedin.com/} % Name and link
-\profilephoto{profile}
+\name{Name} %Your name
+\surname{Sur Name} % Your Surname
+\mail{email@gmail.com} % Your email
+\phone{(+34) 111 111 111} % Your phone
+\address{123 Elm St.}{Fayetteville, NY} % \address{Street} {City, State, etc.)}
+\github{name} % Github profile. The command is designed to automatically generate a link to your profile page.
+\linkedin{Name Sur Name}{https://www.linkedin.com/} % \address{Name of your LinkedIn Profile} {Link to your profile}
+\profilephoto{profile} % Insert a photo of yours. The programm DO NOT automatically crop a circle shape, so use a webtool like:
+					   % http://crop-circle.imageonline.co/
 
 % Generate header
 \headgenerate
@@ -28,6 +60,10 @@
 Telecommunications Engineer with a Master's Degree from the School of Engineering of Bilbao. Predisposed to face new challenges and work with innovative technologies. Passionate about computer science, networking and programming.
 
 \section{Education \& Courses}
+
+%\begin{edulist}[Education Level/Courses]
+%	\eduitem{Years in which you obtain the certificate}{Degree/Course/Master/etc.}{College/Institute(Place)}
+%\begin{edulist}
 
 \begin{edulist}[Higher education]
 	\eduitem{2012 - 2014}{Bachellor in the branch of Science \& Technology}{I.E.S Kantauri (Santurtzi)}
@@ -39,19 +75,48 @@ Telecommunications Engineer with a Master's Degree from the School of Engineerin
 
 \section{Working Experience}
 
+%\begin{worklist}
+%	\workitem{Company}{Years of work}{Company's location}{Description of your work}
+%	\separator -> Line to separate between items
+%	\workitem{Company}{Years of work}{Company's location}{Description of your work}
+%\begin{worlist}
+
 \begin{worklist}
 	\workitem{Sarenet}{September 2019 - Today}{Network Engineer}{Zamudio}{Installation
 and configuration of network equipment. Design of automated monitoring systems for such equipment. Provision of services based on \textit{Cloud Computing}.}
-		%\separator
+	\separator
 \end{worklist}
 
 \section{Communication Skills}
+
+%\begin{commlist}
+%	\commitem[Additional comments]{Language}{Level/Certificate}{Bar describing your skill*}
+%\begin{commlist}
+
+% *Bar options
+% 	\excellent (5 out of 5)
+% 	\good (4 out of 5)
+%	\medium (3 out of 5)
+%	\regular (2 out of 5)
+%	\bad (1 out of 5)
+
 \begin{commlist}
 	\commitem{Spanish}{Native Language}{\excellent}
 	\commitem[(Council of Europe Level B2)]{English}{First Certificate of English}{\good}
 \end{commlist}
 
 \section{Software Skills}
+
+%\begin{skilllist}[Topic]
+%	\skillitem{Task/Element}{Description/Projects done}{Bar describing your skill*}
+%\begin{commlist}
+
+% *Bar options
+% 	\excellent (5 out of 5)
+% 	\good (4 out of 5)
+%	\medium (3 out of 5)
+%	\regular (2 out of 5)
+%	\bad (1 out of 5)
 
 \begin{skilllist} [Programming Language]
 	\skillitem{C}{Medium knowledge. Low-level code control.}{\medium}
@@ -71,6 +136,10 @@ and configuration of network equipment. Design of automated monitoring systems f
 
 \section{Networking Skills}
 
+%\begin{skilllist}[Topic]
+%	\skillitem{Task/Element}{Description/Projects done}{Bar describing your skill*}
+%\begin{commlist}
+
 \begin{skilllist} [General]
 	\skillitem{Linux}{Good knowledge and ease with Linux systems (Native and/or virtual machines).}{\good}
 \end{skilllist}
@@ -84,6 +153,10 @@ and configuration of network equipment. Design of automated monitoring systems f
 \end{skilllist}
 
 \section{Additional Information}
+
+%\begin{extralist}
+%	\item{Your information}
+%\end{extralist}
 
 \begin{extralist}
 	\item{Driving license}

@@ -1,3 +1,32 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%% Minimal-CV Preamble File V.1.0 (C) %%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+%
+%
+% This template has been downloaded from:
+% https://github.com/jlgc96/Minimal-CV-Template
+%
+%
+% Design made by:
+% Jose Luis González Calvo <joselu.gc.96@gmail.com>
+%
+%
+% Important information:
+% This document contains all the the configuration and commands to obtain the design automatically. You can
+% obtain simplified information on how to use the template in the description page on Github. In principle, 
+% you may not need to rewrite this file. However, feel free to do all the required modifications. 
+%
+% File License
+% This work may be distributed and/or modified under the
+% conditions of the LaTeX Project Public License, either version 1.3
+% of this license or (at your option) any later version.
+% The latest version of this license is in
+%   http://www.latex-project.org/lppl.txt
+% and version 1.3 or later is part of all distributions of LaTeX
+% version 2005/12/01 or later.
+%
+%
+
 \documentclass[10pt,a4paper, twocolumn, oneside]{report}
 
 %-------------------------------------------------------------------------%
@@ -66,7 +95,7 @@ ItalicFont    = *-LightOblique.otf
 \newcommand{\addressvar}{}
 \newcommand{\address}[2]{
 	\renewcommand{\addressvar}{{#1}\\{#2}}
-	\setlength{\addresswidth}{\widthof{#2}-4pt}} % If city line is wider than street line, change parameter
+	\setlength{\addresswidth}{\widthof{#2}-4pt}} % If street line is wider than city line, change parameter
 \newcommand{\phonevar}{}
 \newcommand{\phone}[1]{\renewcommand{\phonevar}{{#1}}}
 \newcommand{\githubvar}{}
@@ -94,7 +123,6 @@ ItalicFont    = *-LightOblique.otf
 % Change gap between columns, do not fill vertical spacing
 \setlength{\columnsep}{0.75cm}
 \raggedbottom 
-%https://github.com/ntd/tccv/blob/master/tccv.cls https://github.com/posquit0/Awesome-CV/blob/master/awesome-cv.cls
 
 % Top Header Style
 \newcommand{\headgenerate}{
